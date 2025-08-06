@@ -6,9 +6,10 @@ import { take, tap } from "rxjs/operators";
 export const AuthGuard = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
-  return authService.getToken$()?.pipe(
+  return authService.initAuthListener$().pipe(
     take(1),
     tap((user) => {
+      console.log("AuthGuard user", user);
       if (user) {
         return true;
       } else {
@@ -21,9 +22,10 @@ export const AuthGuard = () => {
 export const AuthRedirectGuard = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
-  return authService.getToken$()?.pipe(
+  return authService.initAuthListener$().pipe(
     take(1),
     tap((user) => {
+      console.log("AuthRedirectGuard user", user);
       if (!user) {
         return true;
       } else {

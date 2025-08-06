@@ -1,9 +1,11 @@
 import { Injectable, inject } from "@angular/core";
-import { BehaviorSubject, Observable, of } from "rxjs";
+import { BehaviorSubject, catchError, map, Observable, of } from "rxjs";
 import { CurrentUserModel } from "@models/auth/current-user.model";
 import { AuthFacadeService } from "@facades/auth-facade.service";
 import { encrypted } from "@root/core/utilities/crypto-utils";
 import { clearLocalStorage, getCurrentUserDecrypt } from "@root/core/utilities/core.utilities";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from "@environments/environment";
 
 @Injectable({
   providedIn: "root"
@@ -11,6 +13,9 @@ import { clearLocalStorage, getCurrentUserDecrypt } from "@root/core/utilities/c
 export class AuthService {
   private readonly _authFacadeService = inject(AuthFacadeService);
   public paramsToLoginTime = new BehaviorSubject<CurrentUserModel>(null);
+  private urlAuth = environment.apiAuthUrl;
+
+  constructor(private http: HttpClient) {}
 
   /**
    * Setea el subject
@@ -26,6 +31,36 @@ export class AuthService {
   public logout(): void {
     this._authFacadeService.reset();
     clearLocalStorage();
+  }
+
+  /**
+   * Escucha los cambios del currentUser desde FireBase
+   */
+  public initAuthListener$(): Observable<boolean> {
+    const currentUser: CurrentUserModel = getCurrentUserDecrypt();
+    const accessToken = currentUser?.accessToken;
+
+    if (!accessToken) {
+      return of(false);
+    }
+
+    console.log(accessToken)
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json"
+    });
+
+    return this.http.get<any>(`${this.urlAuth}auth/me`, { headers }).pipe(
+      map((response) => {
+        console.log("Usuario autenticado:", response);
+        return true;
+      }),
+      catchError((error) => {
+        console.error("No autenticado o error:", error);
+        return of(false);
+      })
+    );
   }
 
   /**

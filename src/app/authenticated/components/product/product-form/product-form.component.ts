@@ -110,10 +110,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   initForm(): UntypedFormGroup {
     return this._fb.group({
       id: null,
-      nombre: ["", [Validators.required]],
-      descripcion: ["", [Validators.required]],
-      precio: [null, [Validators.required]],
-      categoria: ["", [Validators.required]]
+      title: ["", [Validators.required]],
+      description: ["", [Validators.required]],
+      price: [null, [Validators.required]],
+      category: ["", [Validators.required]]
     });
   }
 

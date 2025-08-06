@@ -1,13 +1,11 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ContainerComponent } from "@root/shared/container/container.component";
-import { AuthGuard } from "@services/guard/auth.guard";
 
 const routes: Routes = [
   {
     path: "authenticated",
     component: ContainerComponent,
-    canActivate: [AuthGuard],
     children: [
       { path: "", redirectTo: "product", pathMatch: "full" },
       {
