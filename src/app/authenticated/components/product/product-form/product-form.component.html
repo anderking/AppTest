@@ -1,0 +1,112 @@
+<div class="container">
+
+  <!-- Outer Row -->
+  <div class="row justify-content-center my-5">
+
+    <div class="col-xl-12">
+
+      <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Productos</h1>
+      </div>
+
+      @if (!isLoading) {
+      <div>
+        <div class="card o-hidden border-0">
+          <div class="card-body p-0">
+            <form [formGroup]="mainForm" class="row g-3">
+
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" aria-label="nombre" formControlName="nombre"
+                  [ngClass]="{'is-invalid': mainForm.get('nombre')?.touched && !mainForm.get('nombre')?.valid, 'is-valid': mainForm.get('nombre')?.touched && mainForm.get('nombre')?.valid}">
+                @if (isValidField('nombre')) {
+                <div class="invalid-feedback">
+                  {{ getErrorMessageField('nombre') }}
+                </div>
+                }
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <label for="descripcion" class="form-label">Descripción:</label>
+                <textarea class="form-control" formControlName="descripcion" aria-label="descripcion"
+                  [ngClass]="{'is-invalid': mainForm.get('descripcion')?.touched && !mainForm.get('descripcion')?.valid, 'is-valid': mainForm.get('descripcion')?.touched && mainForm.get('descripcion')?.valid}"></textarea>
+                @if (isValidField('descripcion')) {
+                <div class="invalid-feedback">
+                  {{ getErrorMessageField('descripcion') }}
+                </div>
+                }
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <label for="precio" class="form-label">Precio:</label>
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" formControlName="precio" aria-label="precio"
+                    min="1" [ngClass]="{'is-invalid': mainForm.get('precio')?.touched && !mainForm.get('precio')?.valid, 'is-valid': mainForm.get('precio')?.touched && mainForm.get('precio')?.valid}">
+                  @if (isValidField('precio')) {
+                  <div class="invalid-feedback">
+                    {{ getErrorMessageField('precio') }}
+                  </div>
+                  }
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <label for="categoria" class="form-label">Categoría:</label>
+                <select class="form-select" formControlName="categoria" aria-label="category"
+                  [ngClass]="{'is-invalid': mainForm.get('categoria')?.touched && !mainForm.get('categoria')?.valid, 'is-valid':  mainForm.get('categoria')?.touched && mainForm.get('categoria')?.valid}">
+                  <option value="" selected>Seleccione una opción</option>
+                  @for (item of categoryCombo$; track item) {
+                  <option [ngValue]="item?.id">
+                    {{item?.name}}</option>
+                  }
+                </select>
+                @if (isValidField('categoria')) {
+                <div class="invalid-feedback">
+                  {{ getErrorMessageField('categoria') }}
+                </div>
+                }
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4">
+                <div class="d-grid gap-2 col-12 mx-auto">
+                  @if (!isLoading) {
+                  <button type="button" aria-label="name" class="btn btn-primary" (click)="onSubmit()"
+                    [disabled]="mainForm.invalid">
+                    Guardar
+                  </button>
+                  }
+                  @if (isLoading) {
+                  <button type="button" aria-label="name" class="btn btn-primary">
+                    <div class="spinner-border spinner-border-sm" role="status"></div>
+                  </button>
+                  }
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4">
+                <div class="d-grid gap-2 col-12 mx-auto">
+                  <button type="button" aria-label="name" class="btn btn-info" (click)="clean()">
+                    Limpiar
+                  </button>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4">
+                <div class="d-grid gap-2 col-12 mx-auto">
+                  <button type="button" aria-label="name" class="btn btn-dark" (click)="goBack()">
+                    Regresar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      }
+      @if (isLoading) {
+      <div>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status"></div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

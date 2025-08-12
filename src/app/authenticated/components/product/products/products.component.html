@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row justify-content-center my-5">
+    <div class="col-12">
+      <h2 class="text-center">Productos</h2>
+      @if (items) {
+      <h6 class="text-center">{{ items.length }}</h6>
+      }
+    </div>
+  </div>
+
+  @if (!isLoading) {
+  <div>
+    <div class="d-grid gap-2 d-sm-flex mb-3">
+      <button type="button" aria-label="name" class="btn btn-dark mr-3" (click)="goBack()">Regresar</button>
+      <button type="button" aria-label="name" class="btn btn-primary" (click)="goNew()">Crear</button>
+    </div>
+    @if (items) {
+    <div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover" aria-describedby="productos">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Categoría</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of items | orderBy : ['createdAt']; track item) {
+                <tr>
+                  <td>{{item.nombre}}</td>
+                  <td>{{item.descripcion}}</td>
+                  <td>{{item.precio}}</td>
+                  <td>{{item.categoria}}</td>
+                  <td><button type="button" aria-label="name" (click)="goEdit(item)" class="btn btn-info">Editar</button></td>
+                  <td><button type="button" aria-label="name" (click)="openModal(item)" class="btn btn-danger">Eliminar</button></td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  }
+  @if (isLoading) {
+  <div class="spinner">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+      </div>
+    </div>
+  </div>
+  }
+</div>

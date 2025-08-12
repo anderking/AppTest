@@ -1,0 +1,213 @@
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.btn-info {
+  color: #fff !important;
+}
+
+.img-profile {
+  height: 50px !important;
+  width: 20px !important;
+  border: 3px solid rgb(201, 202, 206) !important;
+  border-radius: 50%;
+}
+
+.invalid-feedback-custom {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #e74a3b;
+}
+
+.card-link {
+  color: #000;
+}
+
+.card-link:hover {
+  color: #0d6efd;
+}
+
+.border-none {
+  border: none !important;
+}
+.btn-primary, .list-group-item.active {
+  background-color: #0E1A98;
+}
+.fs-7{
+  font-size: 14px !important;
+}
+
+@media (min-width: 768px){
+  .d-md-block-custom {
+      display: inline-block !important;
+  }
+}
+/** Styles for charts*/
+
+@media (min-width: 320px) {
+  .charts-advanced-pie-chart>div {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .charts-advanced-pie-chart .advanced-pie {
+    display: block !important;
+    float: none !important;
+    margin: auto !important;
+  }
+
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper {
+    width: 100% !important;
+    height: 150px !important;
+  }
+
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 295px !important;
+    float: none !important;
+    position: unset !important;
+    transform: none !important;
+    margin: auto !important;
+  }
+
+  .col-width-5 {
+    min-width: 50px !important;
+  }
+  .col-width-10 {
+    min-width: 100px !important;
+  }
+
+  .col-width-15 {
+    min-width: 150px !important;
+  }
+
+  .col-width-20 {
+    min-width: 200px !important;
+  }
+}
+
+@media (min-width: 360px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 335px !important;
+  }
+}
+
+@media (min-width: 420px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 395px !important;
+  }
+}
+
+@media (min-width: 480px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 455px !important;
+  }
+}
+
+@media (min-width: 576px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 550px !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 615px !important;
+  }
+}
+
+@media (min-width: 720px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 695px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 665px !important;
+  }
+}
+
+@media (min-width: 840px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 715px !important;
+  }
+}
+
+@media (min-width: 920px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 815px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 890px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .charts-advanced-pie-chart>div {
+    width: 1000px !important;
+    height: 260px !important;
+  }
+
+  .charts-advanced-pie-chart .advanced-pie {
+    display: inline-block !important;
+    float: left !important;
+    margin: auto !important;
+  }
+
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper {
+    width: 707px !important;
+    height: 300px !important;
+  }
+
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 805px !important;
+    float: left !important;
+    position: relative !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .charts-advanced-pie-chart .advanced-pie-legend-wrapper .advanced-pie-legend {
+    width: 900px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ngx-charts-outer {
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  .ngx-charts {
+    width: 300px !important;
+    height: 300px !important;
+  }
+}

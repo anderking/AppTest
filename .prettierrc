@@ -1,0 +1,17 @@
+{
+  "singleQuote": false,
+  "printWidth": 150,
+  "tabWidth": 2,
+  "semi": true,
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "quoteProps": "as-needed",
+  "useTabs": false,
+  "endOfLine": "auto",
+  "importOrder": ["single-imports", "type-imports", "side-effect-imports"],
+  "importOrderSeparation": true,
+  "chainedMethodCall": false
+}
